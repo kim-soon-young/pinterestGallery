@@ -1,0 +1,121 @@
+@charset "utf-8";
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  /* 부모에 있는 색상을 따라가겠다. */
+  color: inherit;
+}
+ul,
+li {
+  list-style: none;
+}
+img {
+  display: block;
+  width: 100%;
+}
+body {
+  color: #000;
+  text-align: center;
+}
+/* 상단 */
+header {
+  width: 35%;
+  position: fixed;
+  /* background-color: antiquewhite; */
+  top: 0;
+  left: 0;
+  text-shadow: 40px 40px 30px rgba(0, 0, 0, 0.5);
+}
+header h1 {
+  font-size: 85px;
+  font-weight: 800;
+  margin-top: 170px;
+  margin-left: 10%;
+  text-align: left;
+  /* 글자 맨 위로 올려주기 */
+  position: relative;
+  z-index: 99999;
+}
+header h1 span {
+  font-size: 75px;
+  font-weight: 200;
+}
+/* 이미지 오브젝트 */
+.object {
+  width: 100%;
+  height: 500px;
+  /* background-color: blueviolet; */
+  position: absolute;
+  top: 50px;
+  left: 0;
+}
+.object .border {
+  /* 위에 이미지 100% 먹으라고
+    해 놨기 떄문에 img가 커짐 */
+  width: 500px;
+  height: 500px;
+  border: 1px solid #d8d8d8;
+  border-radius: 50%;
+  /* background-color: pink; */
+  position: absolute;
+  left: -100px;
+  bottom: 100px;
+  /*  지금부터 에니메이션 시작 */
+  animation: obj2 1 ease-in-out;
+  /* 애니메이션 완료 된 후에도 최종 상태를 유지하도록 설정 */
+  /* animation-fill-mode: both; */
+}
+.border img {
+  animation: obj1 1s ease-in-out;
+  /* animation-fill-mode: both; */
+}
+@keyframes obj1 {
+  0% {
+    transform: translateX(-500px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
+@keyframes obj2 {
+  0% {
+    transform: translateX(-500px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
+
+/* 이미지 섹션 */
+section {
+  width: 60%;
+  /* felx를 주고 싶을 떄는 부모가 있어야 함
+    그런데 부모가 없다 그럼 요소에 float:left */
+  margin-left: 30%;
+  margin-top: 200px;
+}
+section .contents {
+  width: calc(100% / 3);
+  float: left;
+}
+.contents a {
+  /* 디스플레이가 인라인이기 때문에
+    너비 높이가 없음 그래서 display:blcok */
+  width: 90%;
+  background-color: pink;
+  display: block;
+  margin-bottom: 20px;
+  /* 사진 눌렀을 때 넘치지 마라 */
+  overflow: hidden;
+}
+.contents a img {
+  /* 부드럽게 이미지가 커지기 */
+  transition: all 0.3s;
+}
+.contents a img:hover {
+  transform: scale(1.5);
+  filter: grayscale(50%);
+}
